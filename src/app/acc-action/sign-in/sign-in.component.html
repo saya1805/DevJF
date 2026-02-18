@@ -1,0 +1,63 @@
+<div class="login-wrapper">
+  <div class="bg-glow"></div>
+  
+  <div class="glass-card">
+    <span class="border-left"></span>
+  <span class="border-right"></span>
+    <div class="header-section">
+      <h2><lucide-icon name="rocket" [strokeWidth]="2" color="white" class="rocket-icon"></lucide-icon> <span style="color:#03a8d2;">Create</span> Account</h2>
+    </div>
+
+    <form class="login-form" [formGroup]="signinform">
+        <div style="display: flex;gap: 30px;">
+
+        <div>
+      <div class="input-group-custom">
+        <input type="text" formControlName="fullname" placeholder="Full Name" class="form-control my-input">
+      </div>
+      
+      <div class="input-group-custom">
+        <input type="text" formControlName="username" placeholder="Username" class="form-control my-input">
+      </div>
+
+       <div class="input-group-custom">
+        <input type="text" formControlName="mailid" placeholder="Mail Id" class="form-control my-input">
+      </div>
+
+       <div class="input-group-custom">
+        <input type="password" formControlName="Password" placeholder="Password" class="form-control my-input">
+      </div>
+      
+      </div>
+
+      <div class="glass-card-new">
+        <p style="color: white;">Enter Otp</p>
+        <div class="input-group-custom">
+        <input type="text" placeholder="Mail Id" class="form-control my-input">
+      </div>
+
+       <div class="input-group-custom">
+        <input type="text" placeholder="Enter Otp" class="form-control my-input">
+      </div>
+
+       <div>
+        <button type="submit" class="btn btn-start">Submit OTP</button>
+        </div>
+
+
+
+      </div>
+
+      </div>
+
+      <div class="action-row d-flex align-items-center justify-content-between">
+        <div class="divcss">
+        <button type="submit" class="btn btn-start" (click)="SubmitForm()" [disabled]="isLoading()">{{isLoading()? 'Processing':'Sign In'}}</button><br> 
+        <p class="pclass">Already have an account?
+          <span style="color: #03a8d2;cursor: pointer;" routerLink="/action/logIn">Log In</span></p>
+        </div>
+      </div> 
+
+    </form>
+  </div>     
+</div>

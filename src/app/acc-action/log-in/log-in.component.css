@@ -1,0 +1,156 @@
+/* १. बॅकग्राउंड आणि मुख्य कंटेनर */
+.login-wrapper {
+  height: 100vh;
+  width: 100%;
+  /* इमेज पूर्ण स्क्रीनवर फिट करण्यासाठी हे ३ नियम महत्त्वाचे आहेत */
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+              url('../../../../public/bg.jpg');
+  /* background-image: url('../../../assets/bg/bg.jpg'); */
+  background-size: cover;      /* इमेज ताणली न जाता पूर्ण जागा व्यापते */
+  background-position: center; /* इमेज मध्यभागी सेट होते */
+  background-repeat: no-repeat; /* इमेज पुन्हा पुन्हा दिसत नाही */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  font-family: math;
+}
+
+/* २. फोटोसारखा 'Glow' इफेक्ट तयार करण्यासाठी */
+.bg-glow {
+  position: absolute;
+  width: 500px;
+  /* height: 500px; */
+  background: radial-gradient(circle, rgba(0, 210, 255, 0.15) 0%, transparent 70%);
+  top: 10%;
+  left: 20%;
+  z-index: 0;
+}
+
+/* ३. मुख्य Glassmorphism कार्ड */
+.glass-card {
+  position: relative; /* हे महत्त्वाचे आहे */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  border-radius: 28px;
+  /* साधी बॉर्डर पूर्णपणे पारदर्शक ठेवा किंवा खूप फिकट ठेवा */
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+  overflow: hidden; /* जेणेकरून चमक बाहेर जाणार नाही */
+  padding: 20px;
+}
+
+/* वरच्या बाजूची थोडी चमकणारी बॉर्डर (Partial Border) */
+.glass-card::before {
+ content: "";
+  position: absolute;
+  top: 0; left: 15%; width: 70%; height: 2px;
+  background: linear-gradient(90deg, transparent, #1fbee6, #6366f1, transparent);
+  z-index: 5;
+}
+
+.glass-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 15%; width: 70%; height: 2px;
+  background: linear-gradient(90deg, transparent, #6366f1, #1fbee6, transparent);
+  z-index: 5;
+}
+
+.border-left {
+  position: absolute;
+  top: 15%; /* वरून १५% जागा सोडली */
+  left: 0;
+  width: 2px; /* बॉर्डरची जाडी */
+  height: 70%; /* पूर्ण उंची न घेता ७०% घेतली (Partial look साठी) */
+  background: linear-gradient(180deg, transparent, #6366f1, #1fbee6, transparent);
+  z-index: 5;
+}
+
+/* २. उजवी बाजू (Right Border) */
+.border-right {
+  position: absolute;
+  top: 20%; right: 0; width: 2px; height: 60%;
+  background: linear-gradient(180deg, transparent, #6366f1, #1fbee6, transparent);
+  z-index: 5;
+}
+
+/* ४. हेडिंग स्टाईल */
+.header-section h2 {
+  color: #ffffff;
+  font-size: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: math;
+}
+
+
+.rocket-icon {
+  font-size: 1rem;
+  color: white;
+  transform: rotate(5deg); /* रॉकेट तिरके करण्यासाठी */
+}
+
+/* ५. इनपुट फिल्ड्स (Perfect Height & Transparency) */
+.my-input {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 12px !important;
+  height: 36px !important;
+  color: white !important;
+  margin-bottom: 22px;
+  padding: 0 160px 0 10px !important;
+  transition: 0.3s;
+  font-family: math;
+}
+
+.my-input:focus {
+  border-color: #00d2ff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
+}
+
+.my-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ६. ग्रॅडिएंट बटण (Glow सह) */
+.btn-start {
+  background: linear-gradient(90deg, #0a809b98 0%, #690d8db1 100%) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 12px 25px !important;
+  color: white !important;
+  /* font-weight: 700; */
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+  transition: 0.3s;
+}
+
+.btn-start:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(157, 80, 187, 0.6);
+}
+
+/* ७. उजव्या बाजूच्या लिंक्स */
+.helper-links a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 10px;
+  line-height: 1.6;
+  text-align: right;
+  transition: 0.2s;
+  position: relative;
+  z-index: 10 !important;
+  cursor: pointer !important; 
+  pointer-events: auto !important;
+}
+
+.helper-links a:hover {
+  color: #ffffff;
+}
