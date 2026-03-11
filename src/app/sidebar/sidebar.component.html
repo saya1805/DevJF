@@ -1,0 +1,90 @@
+<div class="dashboard-container">
+  <aside class="sidebar">
+    <div class="brand">
+      <i-lucide name="rocket" class="icon-glow"></i-lucide>
+      <span>Dev Journey</span>
+    </div>
+
+    <nav class="nav-menu">
+      <div class="nav-item" [class.active]="selectedOption === 'dashboard'" 
+          (click)="selectedTab('dashboard')" routerLink="/home">
+        <i-lucide name="layout-dashboard"></i-lucide> Dashboard
+      </div>
+      <div class="nav-item" routerLink="/courses/languages"
+      [class.active]="selectedOption === 'course'" (click)="selectedTab('course');opencourse()">
+        <i-lucide name="book-open" ></i-lucide> My Courses
+      </div>
+
+      @if(openCourses()){
+        <div class="nav-item" style="color: #e4dfdfef;padding-left: 39px;" routerLink="/courses/Process"
+      [class.active]="selectedOption === 'ongoing'" (click)="selectedTab('ongoing')">
+        <i-lucide name="PlayCircle"></i-lucide>Ongoing Courses
+      </div>
+
+      <div class="nav-item" style="color: #e4dfdfef;padding-left: 39px;" routerLink="/courses/completed"
+      [class.active]="selectedOption === 'completed'" (click)="selectedTab('completed')">
+        <i-lucide name="CheckCircle2"></i-lucide>Completed Courses
+      </div>
+
+      <div class="nav-item" style="color: #e4dfdfef;padding-left: 39px;" routerLink="/courses/saved"
+      [class.active]="selectedOption === 'saveCourses'" (click)="selectedTab('saveCourses')">
+        <i-lucide name="Bookmark"></i-lucide>Saved Courses
+      </div>
+
+      <div class="nav-item" style="color: #e4dfdfef;padding-left: 39px;" routerLink="/courses/certificate"
+      [class.active]="selectedOption === 'certifactes'" (click)="selectedTab('certifactes')">
+        <i-lucide name="Award"></i-lucide>Certificates
+      </div>
+
+      }
+
+
+      <div class="nav-item"  (click)="openplan();selectedTab('plan')"
+      [class.active]="selectedOption === 'plan'">
+        <i-lucide name="CalendarDays"></i-lucide> Plan
+      </div>
+
+      @if(Plans()) {
+      <div class="nav-item" style="color: #e4dfdfef;padding-left: 39px;" routerLink="/plan/aplan"
+      [class.active]="selectedOption === 'activeplan'" (click)="selectedTab('activeplan')">
+        <i-lucide name="CircleCheck"></i-lucide>Active Plan
+      </div>
+      <div class="nav-item" style="color: #e4dfdfef;padding-left: 39px;" routerLink="/plan/dplan"
+      [class.active]="selectedOption === 'dactiveplan'" (click)="selectedTab('dactiveplan')">
+        <i-lucide name="CircleOff"></i-lucide>D-active Plan
+      </div>
+      <div class="nav-item" style="color: #e4dfdfef;padding-left: 39px;" routerLink="/plan/payment"
+      [class.active]="selectedOption === 'payment'" (click)="selectedTab('payment')">
+        <i-lucide name="Wallet"></i-lucide>Payment
+      </div>
+      <div class="nav-item" style="color: #e4dfdfef;padding-left: 39px;"  routerLink="/plan/invoice"
+      [class.active]="selectedOption === 'invoice'" (click)="selectedTab('invoice')">
+        <i-lucide name="FileText"></i-lucide>Invoice
+      </div>
+    }
+
+      <div class="nav-item" (click)="selectedTab('settings');opensettings()"
+      [class.active]="selectedOption === 'settings'">
+        <i-lucide name="settings"></i-lucide> Settings
+      </div>
+
+      @if(openSettings()){
+        <div class="nav-item" style="color: #e4dfdfef;padding-left: 39px;" routerLink="/Settings/profile"
+      [class.active]="selectedOption === 'profile'" (click)="selectedTab('profile')">
+        <i-lucide name="User"></i-lucide>Profile
+      </div>
+
+      <div class="nav-item" style="color: #e4dfdfef;padding-left: 39px;" 
+      [class.active]="selectedOption === 'Apperance'" (click)="selectedTab('Apperance')">
+        <i-lucide name="Palette"></i-lucide>Apperance
+      </div>
+
+      <div class="nav-item" style="color: #e4dfdfef;padding-left: 39px;" routerLink="/Settings/security"
+      [class.active]="selectedOption === 'security'" (click)="selectedTab('security')">
+        <i-lucide name="ShieldCheck"></i-lucide>Security
+      </div>
+
+      }
+
+    </nav>
+  </aside>

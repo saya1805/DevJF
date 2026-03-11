@@ -8,20 +8,26 @@
       <h2><lucide-icon name="rocket" [strokeWidth]="2" color="white" class="rocket-icon"></lucide-icon> <span style="color:#03a8d2;">Dev</span> Journey</h2>
     </div>
 
-    <form class="login-form">
+    <form class="login-form" [formGroup]="loginform">
       <div class="input-group-custom">
-        <input type="text" placeholder="Username" class="form-control my-input">
+        <input type="text" placeholder="Username" (input)="errorusername.set(false)" formControlName="username" class="form-control my-input">
+      @if(errorusername()){
+        <p style="color: #ef4d9b;margin:0px 0px 8px 0px;">! Please Enter Username</p>
+      }
       </div>
       
       <div class="input-group-custom">
-        <input type="password" placeholder="Password" class="form-control my-input">
+        <input type="password" placeholder="Password" (input)="errorpass.set(false)" formControlName="Password" class="form-control my-input">
+        @if(errorpass()){
+          <p style="color: #ef4d9b;margin:0px 0px 8px 0px;">! Please Enter Password</p>
+        }
       </div>
 
       <div class="action-row d-flex align-items-center justify-content-between">
         <div style="display: flex;gap: 20px;padding-left: 30px;">
 
         <div>
-        <button type="submit" class="btn btn-start">START JOURNEY</button>
+        <button type="submit" class="btn btn-start" (click)="logInForm()">START JOURNEY</button>
         
         </div>
 
@@ -35,3 +41,5 @@
     </form>
   </div>
 </div>
+
+<app-custmize-toast></app-custmize-toast>

@@ -1,0 +1,273 @@
+h1{
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 100;
+  margin-bottom: 0;
+}
+
+.courses-card {
+  width: 436px;
+  height: fit-content;
+  padding: 14px 0px 0px 14px;;
+  border-radius: 24px;
+  background: radial-gradient(circle, #111827 0%, #3c3f45 100%);
+  color: rgb(222, 222, 222);
+  font-family: sans-serif;
+  box-shadow: inset 0 4px 15px rgba(165, 165, 165, 0.6);;
+  /* box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  margin-top: 10px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* margin-bottom: 10px;  */
+  font-size: 18px;
+}
+
+.progress-container {
+  position: relative;
+  margin-right: 42px;
+}
+
+/* SVG स्टाईलिंग */
+.progress-ring {
+  width: 35px;
+  height: 80px;
+  transform: rotate(-90deg);
+  float: right;
+}
+
+.progress-ring-icon {
+  width: 130px;
+  height: 80px;
+  transform: rotate(-90deg);
+}
+
+
+.ring-bg {
+  fill: none;
+  stroke: #4b5563;
+  stroke-width: 14px;
+}
+
+.small-ring-progress {
+  fill: none;
+  stroke: #00f2ff; /* इमेजमधील Cyan कलर */
+  stroke-width: 11px;
+  stroke-linecap: round;
+   /* (2 * PI * Radius 40) */
+ /* हे व्हॅल्यू बदलून प्रोग्रेस कमी-जास्त करा */
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+
+.ring-progress {
+  fill: none;
+  stroke: #cde6e8; /* इमेजमधील Cyan कलर */
+  stroke-width: 3px;
+  stroke-linecap: round;
+   /* (2 * PI * Radius 40) */
+ /* हे व्हॅल्यू बदलून प्रोग्रेस कमी-जास्त करा */
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.ring-progress2 {
+  fill: none;
+  stroke: #00f2ff; /* इमेजमधील Cyan कलर */
+  stroke-width: 3px;
+  stroke-linecap: round;
+   /* (2 * PI * Radius 40) */
+ /* हे व्हॅल्यू बदलून प्रोग्रेस कमी-जास्त करा */
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.ring-progress3 {
+  fill: none;
+  stroke: #bebef5; /* इमेजमधील Cyan कलर */
+  stroke-width: 4px;
+  stroke-linecap: round;
+   /* (2 * PI * Radius 40) */
+ /* हे व्हॅल्यू बदलून प्रोग्रेस कमी-जास्त करा */
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.ring-progress4 {
+  fill: none;
+  stroke: #ca9adf; /* इमेजमधील Cyan कलर */
+  stroke-width: 3px;
+  stroke-linecap: round;
+   /* (2 * PI * Radius 40) */
+ /* हे व्हॅल्यू बदलून प्रोग्रेस कमी-जास्त करा */
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+
+.flame {
+  position: absolute;
+  z-index: 1;
+}
+
+.fl-top-left { top: 30%; left: 5%; }
+.fl-bottom-left { bottom: 15%; left: 15%; }
+.fl-right {  right: 2%;margin-top: 41px;transform: translateY(-50%); }
+.fl-right-circle {  right: 41%;margin-top: 41px;transform: translateY(-50%); }
+
+.journey-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible; /* जेणेकरून ग्लो कट होणार नाही */
+}
+
+.solid-path {
+  stroke-linecap: round; /* लाईनच्या टोकांना गोलाकार लूक देण्यासाठी */
+  /* जर चुकून ग्लोबल CSS मध्ये dasharray असेल तर तो इथे नन करा */
+  stroke-dasharray: none !important; 
+}
+
+.dot-glow {
+  filter: drop-shadow(0 0 8px #ffaa00);
+}
+
+/* लाईन अजून तेजस्वी दिसण्यासाठी ॲनिमेशन (ऐच्छिक) */
+.solid-path {
+  transition: stroke 0.3s ease;
+}
+
+.iconcircle{
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    right: 35%;
+    margin-top: 40px;
+    transform: translateY(-50%);
+    position: absolute;
+    z-index: 1;
+}
+
+.connecting-line {
+  position: absolute;
+  height: 3px;          /* लाईनची जाडी */
+  /* width: 108px;        */
+  /* background-color: #df9a33;  */
+  opacity: 0.5;        /* लाईन थोडी फिकट दिसावी म्हणून */
+  margin: -2px 0;      /* वर्तुळाला चिटकवण्यासाठी थोडे ॲडजस्टमेंट */
+}
+
+.dahboard{
+  font-family: 'Space Mono', monospace; /* किंवा तुमचा सध्याचा फॉन्ट */
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px; /* अक्षरांमध्ये थोडी जागा */
+  color: #0cebeb; /* तुमचा निळा रंग */
+  
+  /* मुख्य ॲनिमेशन इथे जोडले आहे */
+  animation: breathingGlow 3s ease-in-out infinite;
+  
+  /* सुरुवातीचा शॅडो */
+  text-shadow: 0 0 10px rgba(12, 235, 235, 0.7);
+  margin-left: 10px; /* रेषेत आणण्यासाठी थोडं ॲडजस्ट करा */
+}
+
+/* ग्लो कमी-जास्त होण्यासाठी लॉजिक */
+@keyframes breathingGlow {
+  0%, 100% {
+    /* text-shadow: 0 0 10px rgba(12, 235, 235, 0.6), 
+                 0 0 20px rgba(12, 235, 235, 0.4); */
+    transform: scale(1); /* मूळ आकार */
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(12, 235, 235, 0.9), 
+                 0 0 40px rgba(12, 235, 235, 0.6),
+                 0 0 60px rgba(12, 235, 235, 0.3);
+    transform: scale(1.02); /* थोडासा मोठा होईल */
+  }
+}
+
+
+.streak-card {
+  font-family: 'Space Mono', monospace; /* आधुनिक कोडिंग फॉन्ट */
+  background: rgba(255, 255, 255, 0.05); /* शांत गॅलॅक्टिक बॅकग्राउंड */
+  backdrop-filter: blur(10px); /* शांत ग्लास मॉर्फिझम */
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden; /* हे आवश्यक आहे, नाहीतर रॅक बाहेर येईल */
+}
+
+.card-title {
+  color: #a0aec0; /* शांत निळा-जांभळा */
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.data-stream {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+}
+
+.large-number {
+  margin: 20px;
+  font-size: 1rem;
+  color: #0cebeb; /* शांत निळा-जांभळा */
+  font-weight: bold;
+  position: absolute;
+  /* top: 50%; */
+  /* left: 50%; */
+  transform: translate(-50%, -50%);
+  /* टेक्स्टवर शांत ग्लो */
+  text-shadow: 0 0 10px rgba(12, 235, 235, 0.7), 
+               0 0 20px rgba(12, 235, 235, 0.4);
+}
+
+.data-ring {
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  border: 4px solid rgba(12, 235, 235, 0.1);
+  border-top-color: #0cebeb; /* शांत निळा-जांभळा */
+  border-left-color: #B794F4; /* शांत जांभळा */
+  animation: ringSpin 2s infinite alternate;
+}
+
+.sub-labels {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.total {
+  font-size: 0.8rem;
+  color: #0cebeb; /* केशरी-पिवळा */
+}
+
+.record {
+  font-size: 0.8rem;
+  color: #B794F4; /* शांत जांभळा */
+}
+
+.data-status {
+  font-size: 0.8rem;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+  /* टेक्स्टवर शांत ग्लो */
+  text-shadow: 0 0 10px rgba(12, 235, 235, 0.4);
+}
+
+/* रॅक हलल्यासारखा इफेक्ट */
+@keyframes ringSpin {
+  0% { transform: rotate(0deg); opacity: 0.8; }
+  100% { transform: rotate(180deg); opacity: 1; }
+}

@@ -3,12 +3,16 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { LucideAngularModule, Rocket } from 'lucide-angular';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import {Circle, LucideAngularModule, Rocket, LayoutDashboard, BookOpen, Mail, Settings,CalendarDays,CircleOff,CircleCheck,ReceiptText,CreditCard,FileText,Wallet,ShieldCheck,Palette,User,Bookmark,CheckCircle2,Award,PlayCircle,Flame,Calendar,Zap,
+  Route,CodeXml,Cpu,CloudUpload
+ } from 'lucide-angular';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { apiInterceptor } from './Interceptor/api.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
-    importProvidersFrom(LucideAngularModule.pick({ Rocket })),
-     provideRouter(routes), provideClientHydration(withEventReplay()), provideHttpClient(withInterceptors([apiInterceptor]),)]
+    importProvidersFrom(LucideAngularModule.pick({Circle, Rocket,LayoutDashboard, BookOpen, Mail, Settings,CalendarDays,CircleOff,CircleCheck,ReceiptText,CreditCard,FileText,Wallet,ShieldCheck,Palette,User,Bookmark,CheckCircle2,Award,PlayCircle,Flame,Calendar,Zap,
+      Route,CodeXml,Cpu,CloudUpload
+     })),
+     provideRouter(routes), provideClientHydration(withEventReplay()), provideHttpClient(withInterceptors([apiInterceptor]),withFetch())]
 };

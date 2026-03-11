@@ -7,7 +7,7 @@ import { ApiService } from '../../Service/api.service';
 
 @Component({
   selector: 'app-sign-in',
-  imports: [CommonModule,ReactiveFormsModule,RouterModule,LucideAngularModule,RouterLink],
+  imports: [ReactiveFormsModule,RouterModule,LucideAngularModule,RouterLink],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
@@ -25,10 +25,42 @@ export class SignInComponent {
 
   isLoading = signal(false);
   errorMessage = signal('');
-
+  iserrorpass = signal(false);
+  iserrorfulln = signal(false);
+  iserrorusername = signal(false);
+  iserrormail = signal(false);
+  iserrormailotp = signal(false);
+  
   constructor(){}
 
 SubmitForm(){
+  if(!this.signinform.get('fullname')?.value){
+    this.errorMessage.set('Please Enter fullname')
+    this.iserrorfulln.set(true)
+    return;
+  }
+
+  if(!this.signinform.get('username')?.value){
+    this.errorMessage.set('Please Enter username')
+    this.iserrorusername.set(true)
+    return;
+  }
+  
+  if(!this.signinform.get('mailid')?.value){
+    this.errorMessage.set('Please Enter mailid')
+    this.iserrormail.set(true)
+    return;
+  }
+  
+  if(!this.signinform.get('Password')?.value){
+    this.errorMessage.set('Please Enter Password')
+    this.iserrorpass.set(true)
+    return;
+  }
+  // else if(!this.signinform.get('Password')?.value){
+  //   this.errorMessage.set('Please Enter Password')
+  //   this.iserror.set(true)
+  // }
   this.isLoading.set(true)
   this.errorMessage.set('')
 
@@ -47,6 +79,7 @@ SubmitForm(){
   
   this.signinform.value
   console.log(this.signinform.value)
+  // return true
 }
 
 }

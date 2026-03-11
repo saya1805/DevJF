@@ -13,19 +13,31 @@
 
         <div>
       <div class="input-group-custom">
-        <input type="text" formControlName="fullname" placeholder="Full Name" class="form-control my-input">
+        <input type="text" formControlName="fullname" (input)="iserrorfulln.set(false)" placeholder="Full Name" class="form-control my-input">
+        @if(iserrorfulln()){
+          <p style="color: #ef4d9b;margin:0px 0px 8px 0px;">! Please Enter Full Name</p>
+        }
       </div>
       
       <div class="input-group-custom">
-        <input type="text" formControlName="username" placeholder="Username" class="form-control my-input">
+        <input type="text" formControlName="username" (input)="iserrorusername.set(false)" placeholder="Username" class="form-control my-input">
+        @if(iserrorusername()){
+        <p style="color: #ef4d9b;margin:0px 0px 8px 0px;">! Please Enter Username</p>
+        }
       </div>
 
        <div class="input-group-custom">
-        <input type="text" formControlName="mailid" placeholder="Mail Id" class="form-control my-input">
+        <input type="text" formControlName="mailid" (input)="iserrormail.set(false)" placeholder="Mail Id" class="form-control my-input">
+       @if(iserrormail()){
+        <p style="color: #ef4d9b;margin:0px 0px 8px 0px;">! Please Enter Mail Id</p>
+       }
       </div>
 
        <div class="input-group-custom">
-        <input type="password" formControlName="Password" placeholder="Password" class="form-control my-input">
+        <input type="password" formControlName="Password" (input)="iserrorpass.set(false)" placeholder="Password" class="form-control my-input">
+        @if(iserrorpass()){
+        <p style="color: #ef4d9b;margin:0px 0px 8px 0px;">! Please Enter Password</p>
+        }
       </div>
       
       </div>
@@ -38,6 +50,9 @@
 
        <div class="input-group-custom">
         <input type="text" placeholder="Enter Otp" class="form-control my-input">
+        <!-- @if(iserror()){
+        <p style="color: #ef4d9b;margin:0px 0px 8px 0px;">! Please Enter OTP </p>
+        } -->
       </div>
 
        <div>

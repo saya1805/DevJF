@@ -8,7 +8,7 @@ import { PlanRoutingModule } from './plan-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    // PlanRoutingModule
+    PlanRoutingModule
   ]
 })
 export class PlanModule { }

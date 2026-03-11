@@ -10,7 +10,7 @@ export class ApiService {
   private http = inject(HttpClient)
   public apiurl = "https://localhost:7018/api/Auth"
 
-  token = signal<string|null>(localStorage.getItem('user_token'))
+  token = signal<string|null>(typeof window !== 'undefined' ? localStorage.getItem('user_token') : null)
 
   resgister(credentials:any){
     return this.http.post<any>(`${this.apiurl}/signin`,credentials).pipe(

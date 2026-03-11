@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardComponent } from './dashboard.component';
+import { CustmizeToastComponent } from './custmize-toast.component';
 
-describe('DashboardComponent', () => {
-  let component: DashboardComponent;
-  let fixture: ComponentFixture<DashboardComponent>;
+describe('CustmizeToastComponent', () => {
+  let component: CustmizeToastComponent;
+  let fixture: ComponentFixture<CustmizeToastComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DashboardComponent]
+      imports: [CustmizeToastComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DashboardComponent);
+    fixture = TestBed.createComponent(CustmizeToastComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

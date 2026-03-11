@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+<div class="main-layout">
+  
+    @if(router.url != '/action/logIn' && router.url != '/action/fpswd' && router.url != '/action/signIn'){
+   <div>
+      <app-sidebar></app-sidebar>
+  </div>
+
+    }
+
+  <div class="content-wrapper" [class.full-width]="router.url === '/action/logIn' || router.url === '/action/fpswd' || router.url === '/action/signIn'">
+    <router-outlet></router-outlet>
+  </div>
+</div>
