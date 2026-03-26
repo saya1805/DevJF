@@ -5,6 +5,11 @@ import { OngoingCourseComponent } from './ongoing-course/ongoing-course.componen
 import { CompletedCourseComponent } from './completed-course/completed-course.component';
 import { SavedCourseComponent } from './saved-course/saved-course.component';
 import { CertificateComponent } from './certificate/certificate.component';
+import { AngCrsComponent } from './language/ang-crs/ang-crs.component';
+import { AspCrsComponent } from './language/asp-crs/asp-crs.component';
+import { CssCrsComponent } from './language/css-crs/css-crs.component';
+import { HtmlCrsComponent } from './language/html-crs/html-crs.component';
+import { SqlCrsComponent } from './language/sql-crs/sql-crs.component';
 
 const routes: Routes = [
  {
@@ -31,7 +36,27 @@ const routes: Routes = [
   {
     path:'certificate',
     component:CertificateComponent
-  }
+  },
+  {
+    path:'ng',
+    component:AngCrsComponent
+  },
+  {
+    path:'sp',
+    component:AspCrsComponent
+  },
+  {
+    path:'ss',
+    component:CssCrsComponent
+  },
+  {
+    path:'ml',
+    component:HtmlCrsComponent
+  },
+  {
+    path:'ql',
+    component:SqlCrsComponent
+  },
 ];
 
 @NgModule({

@@ -1,9 +1,3 @@
-h1{
-  color: white;
-  font-family: 'Inter', sans-serif;
-  font-weight: 100;
-  margin-bottom: 0;
-}
 
 .courses-card {
   width: 436px;
@@ -24,7 +18,6 @@ h1{
   display: flex;
   align-items: center;
   gap: 10px;
-  /* margin-bottom: 10px;  */
   font-size: 18px;
 }
 
@@ -157,38 +150,6 @@ h1{
   margin: -2px 0;      /* वर्तुळाला चिटकवण्यासाठी थोडे ॲडजस्टमेंट */
 }
 
-.dahboard{
-  font-family: 'Space Mono', monospace; /* किंवा तुमचा सध्याचा फॉन्ट */
-  font-size: 2.5rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 3px; /* अक्षरांमध्ये थोडी जागा */
-  color: #0cebeb; /* तुमचा निळा रंग */
-  
-  /* मुख्य ॲनिमेशन इथे जोडले आहे */
-  animation: breathingGlow 3s ease-in-out infinite;
-  
-  /* सुरुवातीचा शॅडो */
-  text-shadow: 0 0 10px rgba(12, 235, 235, 0.7);
-  margin-left: 10px; /* रेषेत आणण्यासाठी थोडं ॲडजस्ट करा */
-}
-
-/* ग्लो कमी-जास्त होण्यासाठी लॉजिक */
-@keyframes breathingGlow {
-  0%, 100% {
-    /* text-shadow: 0 0 10px rgba(12, 235, 235, 0.6), 
-                 0 0 20px rgba(12, 235, 235, 0.4); */
-    transform: scale(1); /* मूळ आकार */
-  }
-  50% {
-    text-shadow: 0 0 20px rgba(12, 235, 235, 0.9), 
-                 0 0 40px rgba(12, 235, 235, 0.6),
-                 0 0 60px rgba(12, 235, 235, 0.3);
-    transform: scale(1.02); /* थोडासा मोठा होईल */
-  }
-}
-
-
 .streak-card {
   font-family: 'Space Mono', monospace; /* आधुनिक कोडिंग फॉन्ट */
   background: rgba(255, 255, 255, 0.05); /* शांत गॅलॅक्टिक बॅकग्राउंड */
@@ -270,4 +231,72 @@ h1{
 @keyframes ringSpin {
   0% { transform: rotate(0deg); opacity: 0.8; }
   100% { transform: rotate(180deg); opacity: 1; }
+}
+
+
+
+
+
+/* word animation css */
+@property --＠color-1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: hsl(98 100% 62%);
+}
+
+@property --＠color-2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: hsl(204 100% 59%);
+}
+
+/* keyframes that change the color variable */
+@keyframes gradient-change {
+  to {
+    --＠color-1: hsl(210 100% 59%);
+    --＠color-2: hsl(310 100% 59%);
+  }
+}
+
+article {
+  animation: gradient-change 2s linear infinite alternate;
+  
+  background: linear-gradient(
+    to right in oklch, 
+    var(--＠color-1), 
+    var(--＠color-2)
+  );
+  
+  /* old browser support */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* modern browser version */
+  background-clip: text;
+  color: transparent;
+}
+
+@layer demo.support {
+  h1 {
+    line-height: 1.1;
+    font-weight: 600;
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 10px;
+  }
+
+  h1, body {
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  html {
+    block-size: 100%;
+  }
+
+  article {
+    display: grid;
+    gap: 1lh;
+    text-align: center;
+  }
 }
