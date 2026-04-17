@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AngCrsComponent } from './ang-crs.component';
+import { CrsComponent } from './crs.component';
 
-describe('AngCrsComponent', () => {
-  let component: AngCrsComponent;
-  let fixture: ComponentFixture<AngCrsComponent>;
+describe('CrsComponent', () => {
+  let component: CrsComponent;
+  let fixture: ComponentFixture<CrsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AngCrsComponent]
+      imports: [CrsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AngCrsComponent);
+    fixture = TestBed.createComponent(CrsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

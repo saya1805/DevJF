@@ -15,6 +15,8 @@
   overflow-y: auto; /* कंटेंट जास्त असेल तर स्क्रोल येण्यासाठी */
    scrollbar-width: none; /* Firefox साठी */
   -ms-overflow-style: none; 
+      background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('/darktheme.jpg') !important;
+
 }
 
 .content-wrapper.full-width {

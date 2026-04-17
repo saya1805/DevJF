@@ -1,18 +1,37 @@
 <article>
-  <h1 style="margin: 10px;">My Tech Stack</h1>
+  <h1 style="margin: 10px;font-family: 'Roboto Mono', monospace;">My Tech Stack</h1>
 </article>
-<div style="display: flex;flex-wrap: wrap;gap: 20px;">
-@for(crs of Crsarr;track $index){
+<div style="display: flex;flex-wrap: wrap;gap: 20px; background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('/darktheme.jpg') !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;">
+@for(crs of crslistnew();track crs.id){
 
-<div class="courses-card cell" [routerLink]="crs.path">
-    <img [src]="crs.image" [style.width]="crs.img_w" [style.margin-left]="crs.img_margin" [style.height]="crs.img_h">
-    <p style="color: aliceblue;font-size: 35px;margin-bottom: 20px;margin-top:0">{{crs.crs_name}}</p>
-    <div class="progress-container">
+<div class="courses-card cell" (click)="goToDetails(crs.id)" >
+  <img [src]="courseLogos[crs.name]" 
+             [alt]="crs.name" 
+             class="neon-logo" style="    width: 93px;
+    height: 93px;
+    margin-left: 32px;
+    margin-top: 0px;">
+    <!-- <img [src]="crs.image" [style.width]="crs.img_w" [style.margin-left]="crs.img_margin" [style.height]="crs.img_h"> -->
+    <!-- <p style="color: aliceblue;font-size: 35px;margin-bottom: 20px;margin-top:0">{{crs.id}}</p> -->
+    <p style="color: aliceblue;font-size: 17px;margin-top: 10px;
+    margin-left: 0px;">{{crs.name}}</p>
+    <div style="float: right;
+    margin-top: 22px;">
+    <button class="btn">Learn More
+            <i class="fa-sharp fa-solid fa-chevron-right"></i>
+        </button>
+    <!-- <div class="arrow"></div> -->
+
+       <!-- <lucide-icon name="move-right" [size]="24"></lucide-icon> -->
+    </div>
+    <!-- <div class="progress-container">
     <div class="progress-bg">
       <div class="progress-fill" [style.width.%]="crs.crs_width"></div>
     </div>
-    <span class="percentage">{{crs.crs_width}}%</span>
-  </div>
+  </div> -->
 </div>
 }
 </div>

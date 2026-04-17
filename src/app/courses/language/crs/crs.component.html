@@ -1,0 +1,50 @@
+<div class="mainclass">
+  @for(crsinfo of crslistbyId(); track crsinfo.id){
+    <h3 style="color: white; font-size: 34px; margin-left: 30px; margin-top: 20px;">{{crsinfo.title}} Course</h3>
+
+    <div style="display: flex; justify-content: space-around;">
+
+      <div class="courses-card">
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <img [src]="logoPath" alt="Course Logo" width="60" height="60" style="filter: drop-shadow(0 0 5px rgba(0,242,255,0.5));">
+          <h1 style="color: aliceblue; font-size: 20px; margin: 0;">Course Overview</h1>
+        </div>
+        <h3 style="color: rgb(155 155 155);word-wrap: break-word;font-size: 15px;font-weight: 100;margin-top: 15px;">
+          {{crsinfo.description}}
+        </h3>
+      </div>
+
+      <div class="courses-card">
+        <h1 style="color: white; font-size: 20px; margin-bottom: 15px;">Course Details</h1>
+        <p style="color: rgb(169, 169, 169); margin: 8px 0;">Days<span style="float: right; color: #fff;">{{crsinfo.crsDurationInDays}}</span></p>
+        <p style="color: rgb(169, 169, 169); margin: 8px 0;">Amount<span style="float: right; color: #fff;">Rs.{{crsinfo.crsPrice}}</span></p>
+        <p style="color: rgb(169, 169, 169); margin: 8px 0;">Duration Date<span style="float: right; color: #fff; font-size: 12px;">{{ !crsinfo.startdate || crsinfo.startdate.startsWith('0001') ? 'Starting Soon' : (crsinfo.startdate | date:'dd/MM/yyyy') }} to {{crsinfo.endDate | date:'dd/MM/yyyy'}}</span></p>
+
+        <button style="background: linear-gradient(90deg, #00f2ff, #00c2cc); color: black; float: right; padding: 8px 15px; border: none; border-radius: 12px; margin-top: 30px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 10px rgba(0, 242, 255, 0.3);">
+          Buy Now
+        </button>
+      </div>
+
+    </div>
+
+    <div class="module-section">
+      <h2 class="section-title">Module</h2>
+      @for(crsModule of crsinfo.modules; track crsModule.id; let i = $index) {
+        <div class="module-card">
+          <div class="module-info">
+            <div class="module-number"><p style="margin:0;">{{i + 1}}</p></div>
+            <div class="module-details">
+              <h3>{{crsModule.moduleName}}</h3>
+              <p>{{crsModule.moduleDescription}}</p>
+            </div>
+          </div>
+          
+          <div class="module-status">
+            <span class="completion-text" style="color: #00f2ff; font-size: 12px; font-weight: 500;">75% Complete</span>
+            <button class="btn-details">Details</button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

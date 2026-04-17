@@ -9,6 +9,7 @@ export class ApiService {
 
   private http = inject(HttpClient)
   public apiurl = "https://localhost:7018/api/Auth"
+  public crsapiUrl = "https://localhost:7018/api/"
 
   token = signal<string|null>(typeof window !== 'undefined' ? localStorage.getItem('user_token') : null)
 
@@ -44,6 +45,14 @@ export class ApiService {
       localStorage.setItem('user_token',res.token)
       this.token.set(res.token)
     }
+  }
+
+  getCrs(){
+    return this.http.get(this.crsapiUrl +'Course')
+  }
+
+  getCrsbyId(id:any){
+    return this.http.get(this.crsapiUrl +`Course/GetcrsI/${id}`)
   }
 
   constructor() { }

@@ -1,12 +1,12 @@
 .courses-card {
-  width: 436px;
-  height: fit-content;
+  width: 200px;
+  height: 200px;
   padding: 14px 10px 10px 14px;;
   border-radius: 24px;
   background: radial-gradient(circle, #111827 0%, #3c3f45 100%);
   color: rgb(222, 222, 222);
   font-family: sans-serif;
-  box-shadow: inset 0 4px 15px rgba(165, 165, 165, 0.6);;
+  box-shadow: inset 0 4px 15px rgba(165, 165, 165, 0.6);
   /* box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); */
   border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
@@ -284,11 +284,12 @@ body {
 .cell {
     cursor: cell;
     background: linear-gradient(145deg, #2a2a2a, #383838);
-    border: 2px solid #009688;
+    border-left: 3px solid #96d3fe;
 }
+
 .cell:hover {
     transform: scale(1.05);
-    clip-path: polygon(10% 0%, 90% 0%, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0% 90%, 0% 10%);
+    /* clip-path: polygon(10% 0%, 90% 0%, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0% 90%, 0% 10%); */
     letter-spacing: 2px;
 }
 
@@ -360,3 +361,89 @@ body {
         height: 140px;
     }
 }
+
+/*  */
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font: calibri;
+    --size-pri: 1px;
+    --size-sec: 100px; 
+    --main-clr: #0ebac5;
+    --white: #fff;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: repeat(1 1fr);
+    place-items: center;
+    height: 100vh;
+}
+
+body {
+    background-color: rgb(226 232 240);
+}
+
+.btn {
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width:120px;
+    min-height: 35px;
+    font-family: calibri;
+    font-size: 0.9rem;
+    border-radius: 100px;
+    cursor: pointer;
+    font-weight: 400;
+    position: relative;
+    border: 2px solid var(--main-clr);
+    color: var(--main-clr);
+    background-color : transparent;
+    overflow: hidden;
+}
+
+i {
+    font-size: 1em;
+    padding: 0 10px;
+    transition: all 0.5s linear;
+}
+
+    .btn:hover i {
+        transform: translateX(10px);
+    }
+
+    .btn::before, .btn::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -100%;
+    left: 0;
+    background-color: var(--main-clr);
+    z-index: -1;
+    transition: all 400ms ease-in;
+    }
+
+    .btn:hover {
+        color: #fff;
+    }
+
+    .btn::before {
+        opacity: 0.3;
+    }
+
+    /* .btn::after {
+        transition-delay: 0.3s;
+        background-color: rgba(159, 231, 255, 0.776);
+        
+    } */
+
+    .btn:hover::before, .btn:hover::after {
+        top: 0;
+    }
+    
