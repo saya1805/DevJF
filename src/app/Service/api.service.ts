@@ -27,10 +27,19 @@ export class ApiService {
   login(credentials:any){
     return this.http.post<any>(`${this.apiurl}/loginuser`,credentials).pipe(
      tap(res => {
+      // console.log(res.Roles)
         if(res.token){
           localStorage.setItem('user_token',res.token)
           this.token.set(res.token)
         }
+      })
+    )
+  }
+
+  getalluserlist(){
+    return this.http.get(this.apiurl+`/get-users`).pipe(
+      tap(res => {
+        console.log(res)
       })
     )
   }
@@ -53,6 +62,29 @@ export class ApiService {
 
   getCrsbyId(id:any){
     return this.http.get(this.crsapiUrl +`Course/GetcrsI/${id}`)
+  }
+
+  sendOtp(mail:any){
+    return this.http.post<any>(this.apiurl+`/SendOtp?email=${mail}`,{}).pipe(
+      tap( res => {
+        console.log(res)
+      })
+    )
+  }
+
+  verifyOtp(mail:any,otp:any){
+    return this.http.post<any>(this.apiurl+`/VerifyOtp?email=${mail}&Otp=${otp}`,{}).pipe(
+      tap(res => {
+        console.log(res)
+      })
+    )
+  }
+
+
+  userprofileurl(file:File){
+    const formdata = new FormData();
+    formdata.append('file',file)
+    return this.http.post(`${this.apiurl}/UpdateprofilePicture`,formdata);
   }
 
   constructor() { }

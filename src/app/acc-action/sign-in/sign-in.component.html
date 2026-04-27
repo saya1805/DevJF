@@ -11,6 +11,29 @@
     <form class="login-form" [formGroup]="signinform">
         <div style="display: flex;gap: 30px;">
 
+          <!-- <div>
+              <img src="/user.jpg" style="width: 100px;height: 100px;border-radius: 50px;">
+            </div> -->
+
+            <!-- <div class="profile-pic-container" style="text-align: center;">
+  <img [src]="profilePicUrl ? profilePicUrl : '/user.jpg'" 
+       style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #00d2ff; cursor: pointer;"
+       (click)="fileInput.click()">
+
+  <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" style="display: none;">
+  
+  <p style="font-size: 12px; color: #00d2ff;">Click to change photo</p>
+</div> -->
+
+<div >
+  <img [src]="profilePicUrl"
+       alt="Profile Photo" 
+       style="width: 150px; height: 150px; border-radius: 50%;" (click)="fileInput.click()">
+         <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" style="display: none;">
+  
+  <p style="font-size: 12px; color: #00d2ff;">Click to change photo</p>
+</div>
+
         <div>
       <div class="input-group-custom">
         <input type="text" formControlName="fullname" (input)="iserrorfulln.set(false)" placeholder="Full Name" class="form-control my-input">
@@ -42,24 +65,28 @@
       
       </div>
 
-      <div class="glass-card-new">
+      <div class="glass-card-new" [formGroup]="OtpForm">
         <p style="color: white;">Enter Otp</p>
         <div class="input-group-custom">
-        <input type="text" placeholder="Mail Id" class="form-control my-input">
-      </div>
-
-       <div class="input-group-custom">
-        <input type="text" placeholder="Enter Otp" class="form-control my-input">
-        <!-- @if(iserror()){
-        <p style="color: #ef4d9b;margin:0px 0px 8px 0px;">! Please Enter OTP </p>
-        } -->
+        <input type="text" formControlName="otpmail" [value]="signinform.get('mailid')?.value" placeholder="Mail Id" class="form-control my-input">
       </div>
 
        <div>
-        <button type="submit" class="btn btn-start">Submit OTP</button>
+        <button type="submit" class="btn btn-start" (click)="sendotp()">Send OTP</button>
         </div>
 
+        @if(enterOtp()){
+      <div class="input-group-custom" >
+        <input type="text" formControlName="otp" (input)="iserrormailotp.set(false)" placeholder="Enter Otp" class="form-control my-input" style="margin-top: 10px;">
+        @if(iserrormailotp()){
+        <p style="color: #ef4d9b;margin:0px 0px 8px 0px;">! Please Enter OTP </p>
+        }
+      </div>
 
+      <button type="submit" class="btn btn-start" style="margin-top: 10px;" (click)="verifyotp()">Verify OTP</button>
+
+        }
+    
 
       </div>
 

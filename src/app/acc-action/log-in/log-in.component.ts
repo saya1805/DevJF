@@ -27,6 +27,7 @@ export class LogInComponent {
   "username":"",
    "mailid":"",
   "Password":"",
+  "profilePictureUrl":""
   })
 
   logInForm(){
@@ -44,6 +45,7 @@ export class LogInComponent {
       next:(res) =>{
         alert('login sucessfull')
         console.log(res)
+          localStorage.setItem('roles',res.roles)
         this.toast.show('Login Successful','success')
         setTimeout(() => {
         this.router.navigateByUrl('home');

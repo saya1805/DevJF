@@ -1,5 +1,6 @@
 <article>
-    <h1>Dashboard</h1>
+    <h1 *ngIf="mainBoss == false">Dashboard</h1>
+    <h1 *ngIf="mainBoss == true">ADMIN CONSOLE : COMMAND CENTER</h1>
 </article>
 
 <div style="display: flex;gap: 30px; background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('/darktheme.jpg') !important;
@@ -7,7 +8,8 @@
     background-position: center;
     background-repeat: no-repeat;">
 
-<div class="courses-card" >
+  
+<div *ngIf="mainBoss == false" class="courses-card" width="436px">
   <div class="header">
     <lucide-icon name="BookOpen" [size]="20"></lucide-icon>
     <span>Courses Completed</span>
@@ -28,7 +30,7 @@
   </div>
 </div>
 
-<div class="courses-card">
+<div *ngIf="mainBoss == false" class="courses-card">
   <div class="header" style="padding-bottom: 27px;">
     <lucide-icon name="Calendar"  [size]="24"  color="white"   class="streak-glow"></lucide-icon>
     <span>Streak</span>
@@ -54,17 +56,57 @@
 </div>
 </div>
 
+<div *ngIf="mainBoss == true" style="display: flex;gap: 30px;">
+
+  <div class="courses-card" style="width: 232px;height: 159px;padding: 20px;">
+    <div class="header">
+    <lucide-icon name="FileSearch" [size]="20"></lucide-icon>
+    <span style="font-size: 16px;">Pending Course Review</span>
+  </div>
+
+      <div style="display: flex;justify-content:space-between;align-items: center;margin-top: 35px;">
+    <div style="font-size: 37px;">14</div>
+      <div><lucide-icon name="TextSearch" [size]="30" style="color: #02ccef;"></lucide-icon></div>
+    </div>
+  </div> 
+
+  <div class="courses-card" style="width: 232px;height: 159px;padding: 20px;">
+    <div class="header">
+    <lucide-icon name="User" [size]="20"></lucide-icon>
+    <span>New User Enrollments</span>
+  </div>
+
+      <div style="display: flex;justify-content:space-between;align-items: center;margin-top: 35px">
+    <div style="font-size: 37px;">85<br></div>
+      <div><lucide-icon name="User" [size]="30" style="color: rgba(6, 253, 253, 0.845);"></lucide-icon></div>
+    </div>
+      <div style="font-size: 20px;color: #018d94;">this week</div>
+
+  </div> 
+
+  <div class="courses-card" style="width: 232px;height: 159px;padding: 20px;">
+    <div class="header">
+    <lucide-icon name="TriangleAlert" [size]="20" style="color: rgb(249, 116, 116);"></lucide-icon>
+    <span>System Alerts</span>
+  </div>
+
+      <div style="display: flex;justify-content:space-between;align-items: center;margin-top: 35px">
+    <div style="font-size: 10;" style="color: rgb(249, 116, 116);">2<br>critical<br><span style="color: rgb(253, 168, 31);">5</span><br><span style="color: rgb(253, 168, 31);">warning</span></div>
+      <div><lucide-icon name="CircleAlertIcon" [size]="50" style="color: rgb(248, 88, 88);"></lucide-icon></div>
+    </div>
+  </div> 
+
+</div>
+
 </div>
 
 <div style="display: flex;gap: 30px;">
 
-  <div>
+  <div *ngIf="mainBoss == false">
     <img src="/wire.png" style="width:210px;height:250px">
   </div>
 
-
-  
-<div class="courses-card" style="width: 680px;margin-top: 25px;">
+<div *ngIf="mainBoss == false" class="courses-card" style="width: 680px;margin-top: 25px;">
 <div class="journey-card">
   <div class="content">
     <h3 style="text-align: center;color: rgb(203, 240, 247);">START YOUR JOURNEY</h3>
@@ -131,6 +173,42 @@
   </div>
 
 </div>
+</div>
+
+</div>
+
+<div *ngIf="mainBoss == true" class="courses-card" style="width: 410px;height:fit-content;padding: 20px;">
+  <p style="font-size: larger;">RECENT PLATFORM ACTIVITY</p>
+  @for(user of userlist();track user.id ){
+    <div style="border-bottom: 1px solid white;display: flex;gap: 20px;">
+      
+      <!-- <div>
+      <img [src]="getProfileImageUrl(user.profilePictureUrl)" 
+           style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" 
+           alt="Profile">
+    </div> -->
+
+
+    <div class="avatar-container">
+    @if (user.profilePictureUrl) {
+      <img [src]="getProfileImageUrl(user.profilePictureUrl)" 
+           style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+    } @else {
+      <div class="initials-avatar">
+        {{ getInitials(user.fullname) }}
+      </div>
+    }
+  </div>
+
+    <div>{{user.fullname}}</div>
+    <div>{{user.mailid}}</div>
+    <div>{{user.roles}}</div>
+    </div>
+  }
+</div>
+
+<div *ngIf="mainBoss == true" class="courses-card" style="width: 410px;height:fit-content">
+<p style="font-size: larger;">QUICK ADMIN ACTIONS</p>
 </div>
 
 </div>
