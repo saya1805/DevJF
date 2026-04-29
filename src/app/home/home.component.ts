@@ -34,7 +34,7 @@ export class HomeComponent {
   getProfileImageUrl(url: string | null): string {
   // १. जर काहीच नसेल (null), तर डिफॉल्ट इमेज द्या
   if (!url) {
-    return 'assets/default-user.png'; // तुमच्या प्रोजेक्टमधील डिफॉल्ट इमेज
+    return '/user.jpg'; // तुमच्या प्रोजेक्टमधील डिफॉल्ट इमेज
   }
 
   // २. जर पाथ आधीच '/' ने सुरू होत असेल (उदा. /uploads/...)

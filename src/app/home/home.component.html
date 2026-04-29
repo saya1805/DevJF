@@ -9,7 +9,7 @@
     background-repeat: no-repeat;">
 
   
-<div *ngIf="mainBoss == false" class="courses-card" width="436px">
+<div *ngIf="mainBoss == false" class="courses-card" style="width: 436px;">
   <div class="header">
     <lucide-icon name="BookOpen" [size]="20"></lucide-icon>
     <span>Courses Completed</span>
@@ -30,7 +30,7 @@
   </div>
 </div>
 
-<div *ngIf="mainBoss == false" class="courses-card">
+<div *ngIf="mainBoss == false" class="courses-card" style="width: 436px;">
   <div class="header" style="padding-bottom: 27px;">
     <lucide-icon name="Calendar"  [size]="24"  color="white"   class="streak-glow"></lucide-icon>
     <span>Streak</span>
@@ -56,7 +56,7 @@
 </div>
 </div>
 
-<div *ngIf="mainBoss == true" style="display: flex;gap: 30px;">
+<div *ngIf="mainBoss == true" style="display: flex;gap: 45px;">
 
   <div class="courses-card" style="width: 232px;height: 159px;padding: 20px;">
     <div class="header">
@@ -177,38 +177,67 @@
 
 </div>
 
-<div *ngIf="mainBoss == true" class="courses-card" style="width: 410px;height:fit-content;padding: 20px;">
-  <p style="font-size: larger;">RECENT PLATFORM ACTIVITY</p>
-  @for(user of userlist();track user.id ){
-    <div style="border-bottom: 1px solid white;display: flex;gap: 20px;">
-      
-      <!-- <div>
-      <img [src]="getProfileImageUrl(user.profilePictureUrl)" 
-           style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" 
-           alt="Profile">
-    </div> -->
+<div *ngIf="mainBoss == true" class="courses-card" style="width: fit-content;height:fit-content;padding: 20px;">
+  <p style="font-size: larger;">RECENT PLATFORM ACTIVITY </p>
+  <table>
+      <thead>
+      <tr style="color: rgb(157, 157, 157);">
+      <th style="border-bottom: 1px solid #888888;"></th>
+      <th style="border-bottom: 1px solid #888888;padding: 0px 0px 10px 0px;text-align: left;">Name</th>
+      <th style="border-bottom: 1px solid #888888;padding: 0px 0px 10px 0px;text-align: left;">Mail</th>
+      <th style="border-bottom: 1px solid #888888;padding: 0px 0px 10px 0px;text-align: left;">Role</th>
+    </tr>
+    </thead>
 
-
-    <div class="avatar-container">
-    @if (user.profilePictureUrl) {
+    <tbody style="margin: 5px;">
+       @for(user of userlist();track user.id ){
+    <tr style="padding-top: 5px;">
+      <td style="border-bottom: 1px solid#888888;">  @if (user.profilePictureUrl) {
       <img [src]="getProfileImageUrl(user.profilePictureUrl)" 
-           style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+           style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;margin: 5px;padding: 0px 5px 0px 8px;">
     } @else {
-      <div class="initials-avatar">
-        {{ getInitials(user.fullname) }}
+      <div class="initials-avatar" style="width: 40px; height: 40px;border-radius: 50%;margin: 10px; background-color: rgb(155, 96, 96); display: flex; align-items: center; justify-content: center;">
+        <p style="color: white; margin: 0; font-size: 20px; ">{{ getInitials(user.fullname) }}</p>
       </div>
-    }
-  </div>
-
-    <div>{{user.fullname}}</div>
-    <div>{{user.mailid}}</div>
-    <div>{{user.roles}}</div>
-    </div>
-  }
+    }</td>
+      <td style="border-bottom: 1px solid #888888;margin: 5px;padding: 0px 5px 0px 8px;">{{user.fullname}}</td>
+      <td style="border-bottom: 1px solid #888888;margin: 5px;padding: 0px 5px 0px 8px;">{{user.mailid}}</td>
+      <td style="border-bottom: 1px solid #888888;margin: 5px;padding: 0px 5px 0px 8px;">{{user.roles}}</td>
+    </tr>
+       }
+       </tbody>
+    <!-- </tbody> -->
+  </table>
 </div>
 
-<div *ngIf="mainBoss == true" class="courses-card" style="width: 410px;height:fit-content">
+<div *ngIf="mainBoss == true" class="courses-card" style="width: 368px;height:fit-content;padding-bottom: 10px;">
 <p style="font-size: larger;">QUICK ADMIN ACTIONS</p>
+
+<div style="display: flex;flex-wrap: wrap;gap: 20px;">
+<div class="borderadmin1" style="border-image-source: linear-gradient(to right, rgb(173, 236, 241), rgb(200, 130, 244));">
+  <p style="margin: 8px;color: rgb(173, 236, 241);font-size: 14px;"><lucide-icon name="FilePlus" [size]="18" style="margin-right: 5px;"></lucide-icon>Create New Topic</p>
+</div>
+
+<div class="borderadmin1" style="border-image-source: linear-gradient(to right, rgb(200, 130, 244), rgb(173, 236, 241));">
+  <p style="margin: 5px;color: rgb(200, 130, 244);font-size: 14px;"><lucide-icon name="ListTodo" [size]="18" style="margin-right: 5px;"></lucide-icon>User List</p>
+</div>
+
+
+<div class="borderadmin1" style="border-image-source: linear-gradient(to right, rgb(200, 130, 244), rgb(173, 236, 241));">
+  <p style="margin: 5px;font-size: 14px;color: rgb(200, 130, 244);"><lucide-icon name="FileQuestionMark" [size]="18" style="margin-right: 5px;"></lucide-icon>Queries</p>
+</div>
+
+<div class="borderadmin1" style="border-image-source: linear-gradient(to right, rgb(200, 130, 244), rgb(173, 236, 241));">
+  <p style="margin: 5px;font-size: 14px;color: rgb(173, 236, 241);"><lucide-icon name="MessageSquareQuote" [size]="18" style="margin-right: 5px;"></lucide-icon>Notification</p>
+</div>
+
+<div class="borderadmin1" style="border-image-source: linear-gradient(to right, rgb(173, 236, 241), rgb(200, 130, 244));">
+  <p style="margin: 8px;color: rgb(173, 236, 241);font-size: 14px;"><lucide-icon name="ChartBarIcon" [size]="18" style="margin-right: 5px;"></lucide-icon>Report</p>
+</div>
+
+</div>
+
+
 </div>
 
 </div>

@@ -16,6 +16,10 @@ public selectedOption:any = signal('dashboard')
 public openSettings = signal(false)
 public openCourses = signal(false)
 
+private Roles = localStorage.getItem('roles')
+
+adminboss = false
+
   openplan(){
     this.Plans.update(state => !state);
   }
@@ -30,6 +34,14 @@ public openCourses = signal(false)
 
   selectedTab(tab:any){
     this.selectedOption.set(tab)
+  }
+
+  constructor(){
+    if(this.Roles == "Admin"){
+      this.adminboss = true
+    }else{
+      this.adminboss = false
+    }
   }
 
 }

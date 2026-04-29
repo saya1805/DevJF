@@ -300,3 +300,12 @@ article {
     text-align: center;
   }
 }
+
+.borderadmin1{
+    width: 150px;
+    height: 45px;
+    border: 2px solid;
+    border-image-slice: 1;
+    padding: 5px;
+    text-align: center;
+}

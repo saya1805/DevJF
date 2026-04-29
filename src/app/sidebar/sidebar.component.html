@@ -9,11 +9,17 @@
     <nav class="nav-menu">
       <div class="nav-item" [class.active]="selectedOption === 'dashboard'" 
           (click)="selectedTab('dashboard')" routerLink="/home">
-        <i-lucide name="layout-dashboard"></i-lucide> Dashboard
+        <i-lucide name="layout-dashboard"></i-lucide> {{adminboss == true ?' Admin Dashboard' : 'Dashboard'}}
       </div>
-      <div class="nav-item" routerLink="/courses/languages"
+
+      <div class="nav-item" routerLink="/courses/languages" *ngIf="adminboss == false"
       [class.active]="selectedOption === 'course'" (click)="selectedTab('course');opencourse()">
         <i-lucide name="book-open" ></i-lucide> My Courses
+      </div>
+
+      <div class="nav-item" routerLink="/courses/languages" *ngIf="adminboss == true"
+      [class.active]="selectedOption === 'course'">
+        <i-lucide name="Users" ></i-lucide> User Management
       </div>
 
       @if(openCourses()){
@@ -40,9 +46,19 @@
       }
 
 
-      <div class="nav-item"  (click)="openplan();selectedTab('plan')"
+      <div class="nav-item"  (click)="openplan();selectedTab('plan')" *ngIf="adminboss == false"
       [class.active]="selectedOption === 'plan'">
         <i-lucide name="CalendarDays"></i-lucide> Plan
+      </div>
+
+        <div class="nav-item"  *ngIf="adminboss == true"
+      [class.active]="selectedOption === 'plan'">
+        <i-lucide name="FileAxis3dIcon"></i-lucide> Course Management
+      </div>
+
+        <div class="nav-item" routerLink="/courses/languages" *ngIf="adminboss == true"
+      [class.active]="selectedOption === 'course'" >
+        <i-lucide name="SquareChartGantt" ></i-lucide> Reports
       </div>
 
       @if(Plans()) {
