@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, effect, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 import { ApiService } from '../Service/api.service';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-home',
-  imports: [LucideAngularModule,CommonModule],
+  imports: [LucideAngularModule,CommonModule,RouterLink,RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

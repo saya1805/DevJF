@@ -27,4 +27,8 @@ export const routes: Routes = [
         path:'home',
         component:HomeComponent
     },
+    {
+        path:'ad',
+        loadChildren:()=> import('../app/admin/admin.module').then(m => m.AdminModule)
+    }
 ];
