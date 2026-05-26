@@ -8,8 +8,13 @@ import { tap } from 'rxjs';
 export class ApiService {
 
   private http = inject(HttpClient)
-  public apiurl = "https://localhost:7018/api/Auth"
-  public crsapiUrl = "https://localhost:7018/api/"
+  // Local url path
+  // public crsapiUrl = "https://localhost:7018/api/"
+  // public apiurl = "https://localhost:7018/api/Auth"
+
+  // Live Url Path
+  public apiurl = "https://devjback.bsite.net/api/Auth"
+  public crsapiUrl = "https://devjback.bsite.net/api/"
 
   token = signal<string|null>(typeof window !== 'undefined' ? localStorage.getItem('user_token') : null)
 
@@ -85,6 +90,23 @@ export class ApiService {
     const formdata = new FormData();
     formdata.append('file',file)
     return this.http.post(`${this.apiurl}/UpdateprofilePicture`,formdata);
+  }
+
+  addcrsInfo(info:any,){
+    return this.http.post<any>(this.crsapiUrl+"Course/AddMOduleTopic",info).pipe(
+      tap(res => {
+        console.log(res)
+      })
+    )
+  }
+
+
+  addcrsmodelInfo(id:any,modules:any){
+    return this.http.post<any>(`${this.crsapiUrl}Course/AddMOduleOnly/${id}`,modules).pipe(
+      tap(res => {
+        console.log(res)
+      })
+    )
   }
 
   constructor() { }

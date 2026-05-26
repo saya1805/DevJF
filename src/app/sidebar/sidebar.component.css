@@ -12,7 +12,9 @@
 .sidebar {
   width: 260px;
   max-height: calc(100vh - 40px);
-  background: rgb(227 224 224 / 16%);
+  /* background: linear-gradient(to top, #000000 0%, #2a0845 100%); */
+  /* background: linear-gradient(to top, #000000 0%, #e372fd90 100%); */
+  /* background: rgba(31, 30, 30, 0.016); */
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 19px 8px;

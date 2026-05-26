@@ -85,3 +85,50 @@ body{
     border-radius:50%;
   }
 }
+
+/* loader css */
+
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* हलका ट्रान्सपरंट डार्क बॅकग्राउंड */
+  backdrop-filter: blur(5px); /* बॅकग्राउंड ब्लर करण्यासाठी */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* मुख्य स्पिनर */
+.neon-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(0, 188, 212, 0.1);
+  border-left-color: #00bcd4; /* तुमचा Cyan कलर */
+  border-radius: 50%;
+  animation: spin 1s linear infinite, glow 1.5s ease-in-out infinite alternate;
+}
+
+/* फिरण्याची ॲनिमेशन */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ग्लो (Glow) इफेक्ट */
+@keyframes glow {
+  from { box-shadow: 0 0 5px #00bcd4, 0 0 10px #00bcd4; }
+  to { box-shadow: 0 0 15px #00bcd4, 0 0 30px #00bcd4; }
+}
+
+.loading-text {
+  color: white;
+  margin-top: 15px;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 12px;
+  text-align: center;
+}

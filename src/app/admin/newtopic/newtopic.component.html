@@ -1,39 +1,108 @@
-<p>+ Add New Course</p>
-<div>
-    <h1>Course Details:-</h1>
-    <div>
-        <label>Name</label>
-        <input type="text">
-    </div>
+<div style="background-color: black;">
 
-    <div>
-        <label>Description></label>
-        <input type="text">
-    </div>
+  <button class="custom-btn btn-8" [class.active]="selectedOption() === 'Crs'" (click)="selectedTab('Crs');crsinfopendiv()">Course Information</button>
+  <button class="custom-btn btn-8" [class.active]="selectedOption() === 'Md'" (click)="selectedTab('Md');mdinfopendiv()">Module Information</button>
 
-    <div>
-        <label>Price</label>
-        <input type="text">
-    </div>
+  <div [formGroup]="crsinfoAdd">
+    
+    @if(crsdiv()){
+      <div style="color: white; padding-top: 20px;">
+        <h3 style="border-bottom: 2px solid #00E5FF;display: inline-block;padding-bottom: 3px;font-size: 20px;letter-spacing: 1px;">Add New Course</h3>
+        
+        <div style="display: flex; gap: 30px; margin-bottom: 20px;">
+          <div>
+            <label>Course Name</label><br>
+            <select class="inputall" formControlName="Title" (input)="iserrortitle.set(false)">
+              <option [ngValue]="null" disabled>Select Course</option>
+              @for(crslist of crslistnew(); track crslist.id){
+                <option [ngValue]="crslist">{{crslist.name}}</option>
+              }
+            </select>
+             @if(iserrortitle()){
+                <p style="color: #03a8d2;;margin:7px 0px 8px 0px;">! Please Select Course </p>
+                }
+          </div>
 
-    <div>
-        <label>Duration</label>
-        <input type="text">
-    </div>
+          <div>
+            <label>Duration (days)</label><br>
+            <input type="text" class="inputall" (input)="iserrorduration.set(false)" formControlName="crsDurationInDays">
+             @if(iserrorduration()){
+                <p style="color: #03a8d2;;margin:7px 0px 8px 0px;">! Please Enter Coure Duration.</p>
+                }
+          </div>
 
-    <div>
-        <label>Days</label>
-        <input type="text">
-    </div>
+          <div>
+            <label>Fee (Rs.)</label><br>
+            <input type="text" class="inputall" (input)="iserrorprice.set(false)" formControlName="crsPrice">
+             @if(iserrorprice()){
+                <p style="color: #03a8d2;;margin:7px 0px 8px 0px;">! Please Enter course Price. </p>
+                }
+          </div>
+        </div>
 
-    <h1>Module Details:-</h1>
-    <div>
-        <label>Name</label>
-        <input type="text">
-    </div>
+        <div>
+          <label>Description</label><br>
+          <textarea class="custom-textarea inputall" (input)="iserrordescrp.set(false)" formControlName="Description" placeholder="Enter full description here..." 
+            style="width: 800px; height: 150px; background-color: #2e2e2e; color: white; border-radius: 7px; margin-top: 10px; padding: 10px;"></textarea>
+             @if(iserrordescrp()){
+                <p style="color: #03a8d2;;margin:7px 0px 8px 0px;">! Please Enter Course Description. </p>
+                }
+        </div>
+        
+        <button class="submitBtn" style="margin-top: 20px;" (click)="Crssubmit()">Submit</button>
+      </div>
+    }
 
-    <div>
-        <label>Description</label>
-        <input type="text">
-    </div>
+     @if(mddiv()){
+<div style="color: white; padding: 20px;">
+  <h3 style="border-bottom: 2px solid #00E5FF;display: inline-block;padding-bottom: 3px;font-size: 20px;letter-spacing: 1px;">Add Modules</h3>
+
+  <div style="background: rgba(255,255,255,0.05); border-radius: 8px;margin-bottom: 10px;padding-left: 10px;">
+     <label>Module Course Name</label><br>
+    <select class="inputall" formControlName="Title" style="width: 400px;">
+      <option [ngValue]="null" disabled>-- Select Course --</option>
+      @for(crs of crslistnew(); track crs.id) {
+        <option [ngValue]="crs">{{ crs.name }}</option>
+      }
+    </select>
+  </div>
+
+  <div formArrayName="modules">
+    
+    @for(mod of modules.controls; track $index) {
+      <div [formGroupName]="$index" style="margin-bottom: 30px; padding-left: 10px;">
+        
+        <div style="margin-bottom: 15px;">
+          <label>Module Name</label><br>
+          <input type="text" formControlName="moduleName" class="inputall" placeholder="Enter module name" style="width: 400px; margin-top: 5px;">
+        </div>
+
+        <div>
+          <label>Module Description</label><br>
+          <textarea formControlName="moduleDescription" class="custom-textarea inputall" 
+            placeholder="Enter module description..." 
+            style="width: 800px; height: 100px; margin-top: 10px; padding: 10px;"></textarea>
+        </div>
+
+      </div>
+    }
+  </div>
+
+  <div style="margin-top: 30px;">
+    <button type="button" class="submitBtn" (click)="addmodule()">Submit All Modules</button>
+  </div>
+
 </div>
+    }
+  </div>
+</div>
+
+
+@if(isLoading()) {
+  <div class="loader-overlay">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div class="neon-spinner"></div>
+      <div class="loading-text">Processing...</div>
+    </div>
+  </div>
+}

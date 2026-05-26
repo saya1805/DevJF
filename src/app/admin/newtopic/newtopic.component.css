@@ -1,0 +1,173 @@
+button {
+    padding: 10px 20px;
+    border-radius: 49px;
+    border: 1px solid #8e8e8e;
+    margin-right: 20px;
+}
+
+.submitBtn {
+    background-color: #2b3b5c;
+    color: rgb(197 195 195);
+    border: none;
+    padding: 8px 37px;
+    margin-top: 10px;
+}
+
+.inputall {
+    background-color: #2e2e2e;
+    color: white;
+    width: 250px;
+    padding: 10px 0px 5px 10px;
+    margin-top: 10px;
+    /* border: 1px solid #6d6c6c; */
+    border: 1px solid #444;
+    border-radius: 7px;
+}
+
+.inputall:focus {
+    border-color: #00bcd4; /* तुमचा Cyan कलर */
+    box-shadow: 0 0 8px rgba(0, 188, 212, 0.4);
+    outline: none;
+}
+
+.custom-btn {
+    width: 200px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+                7px 7px 20px 0px rgba(0, 0, 0, .1),
+                4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+}
+
+/* --- Button 8 Styles --- */
+.btn-8 {
+    background-color:#00bcd4;
+    line-height: 42px;
+    color: black;
+    padding: 0;
+    border: none;
+    margin-top: 20px;
+    /* color: black; */
+}
+
+.btn-8 span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Pseudo elements for borders */
+.btn-8:before, .btn-8:after,
+.btn-8 span:before, .btn-8 span:after {
+    position: absolute;
+    content: "";
+    background: #03a8d2;
+    /* color: white; */
+    transition: all 0.3s ease;
+}
+
+/* Right & Bottom Borders */
+.btn-8:before { right: 0; bottom: 0; width: 2px; height: 0%; }
+.btn-8:after { right: 0; bottom: 0; width: 0%; height: 2px; }
+
+/* Left & Top Borders */
+.btn-8 span:before { left: 0; top: 0; width: 2px; height: 0%; }
+.btn-8 span:after { left: 0; top: 0; width: 0%; height: 2px; }
+
+/* Hover Effects */
+.btn-8:hover { background: transparent; color: #03a8d2;}
+.btn-8:hover:before, .btn-8:hover span:before { height: 100%; }
+.btn-8:hover:after, .btn-8:hover span:after { width: 100%; }
+.btn-8 span:hover { color: #03a8d2; }
+
+/* --- ACTIVE STATE --- */
+/* जेव्हा बटन ऍक्टिव्ह असेल तेव्हा ती बॉर्डर कायमची दिसेल */
+.btn-8.active {
+    background: transparent !important;
+    color: #03a8d2 !important;
+    box-shadow: inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+}
+
+.btn-8.active:before, .btn-8.active span:before {
+    height: 100% !important;
+}
+
+.btn-8.active:after, .btn-8.active span:after {
+    width: 100% !important;
+}
+
+/* loader css */
+
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* हलका ट्रान्सपरंट डार्क बॅकग्राउंड */
+  backdrop-filter: blur(5px); /* बॅकग्राउंड ब्लर करण्यासाठी */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* मुख्य स्पिनर */
+.neon-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(0, 188, 212, 0.1);
+  border-left-color: #00bcd4; /* तुमचा Cyan कलर */
+  border-radius: 50%;
+  animation: spin 1s linear infinite, glow 1.5s ease-in-out infinite alternate;
+}
+
+/* फिरण्याची ॲनिमेशन */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ग्लो (Glow) इफेक्ट */
+@keyframes glow {
+  from { box-shadow: 0 0 5px #00bcd4, 0 0 10px #00bcd4; }
+  to { box-shadow: 0 0 15px #00bcd4, 0 0 30px #00bcd4; }
+}
+
+.loading-text {
+  color: white;
+  margin-top: 15px;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 12px;
+  text-align: center;
+}
+
+#toast-container > .toast-success {
+  background-color: #1a1a1a;
+  border: 1px solid #00bcd4;
+  color: #00bcd4;
+  box-shadow: 0 0 10px rgba(0, 188, 212, 0.4);
+}
+
+#toast-container > .toast-error {
+  background-color: #1a1a1a;
+  border: 1px solid #ff4444;
+  color: #ff4444;
+}
+
+/* प्रोग्रेस बारचा रंग बदलण्यासाठी */
+.toast-progress {
+  background-color: #00bcd4 !important;
+}
