@@ -34,7 +34,8 @@ const routes: Routes = [
   },
   {
     path:'lncrs/:id',
-    component:CrsComponent
+    component:CrsComponent,
+    data: { prerender: false }
   }
 ];
 
