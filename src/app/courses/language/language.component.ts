@@ -30,8 +30,11 @@ export class LanguageComponent {
     })
   }
 
-  goToDetails(id:any){
-    this.route.navigate(['/courses/lncrs/',id])
+  goToDetails(course:any){
+    // this.route.navigate(['/courses/lncrs/',id])
+    this.route.navigate(['/courses/lncrs-detail'], { 
+    state: { courseData: course } 
+  });
   }
 
 

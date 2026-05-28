@@ -33,9 +33,8 @@ const routes: Routes = [
     component:CertificateComponent
   },
   {
-    path:'lncrs/:id',
+    path:'lncrs-detail',
     component:CrsComponent,
-    data: { prerender: false }
   }
 ];
 
