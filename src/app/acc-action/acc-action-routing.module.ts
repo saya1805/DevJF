@@ -7,16 +7,14 @@ import { ForgetPswdComponent } from './forget-pswd/forget-pswd.component';
 
 const routes: Routes = [
   {
-   path: '', // म्हणजे मुख्य '/action'
-    component: LogInComponent, // (किंवा तुमचे मुख्य ॲक्शन कम्पोनंट)
-    children: [
-      { path: 'logIn', component: LogInComponent } // '/action/logIn' साठी
-    ]
+    path:'',
+    redirectTo:'logIn',
+    pathMatch:'full'
   },
-  // {
-  //   path:'logIn',
-  //   component:LogInComponent
-  // },
+  {
+    path:'logIn',
+    component:LogInComponent
+  },
   {
     path:'logOut',
     component:LogOutComponent
