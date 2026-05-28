@@ -31,7 +31,7 @@ export class LanguageComponent {
   }
 
   goToDetails(id:any){
-    this.route.navigate(['courses/lncrs',id])
+    this.route.navigate(['/courses/lncrs',id])
   }
 
 

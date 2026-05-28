@@ -26,9 +26,7 @@
 </div> -->
 
 <div >
-  <img [src]="profilePicUrl"
-       alt="Profile Photo" 
-       style="width: 150px; height: 150px; border-radius: 50%;" (click)="fileInput.click()">
+  <img [src]="profilePicUrl ? profilePicUrl : '../../../../public/user.jpg'" alt="Profile Photo"  style="width: 150px; height: 150px; border-radius: 50%;" (click)="fileInput.click()">
          <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" style="display: none;">
   
   <p style="font-size: 12px; color: #00d2ff;">Click to change photo</p>
