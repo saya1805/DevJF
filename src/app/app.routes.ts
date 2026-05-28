@@ -9,7 +9,7 @@ export const routes: Routes = [
     },
     {
         path:'action',
-        loadChildren:()=> import('../app/acc-action/acc-action.module').then(m=> m.AccActionModule)
+        loadChildren:()=> import('./acc-action/acc-action.module').then(m=> m.AccActionModule)
     },
     {
         path:'courses',
