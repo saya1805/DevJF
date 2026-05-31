@@ -44,32 +44,38 @@ export class SignInComponent {
   constructor(){}
 
 SubmitForm(){
+    this.isLoading.set(true)
   if(!this.signinform.get('fullname')?.value){
     this.errorMessage.set('Please Enter fullname')
     this.iserrorfulln.set(true)
+    this.isLoading.set(false)
     return;
   }
 
   if(!this.signinform.get('username')?.value){
     this.errorMessage.set('Please Enter username')
     this.iserrorusername.set(true)
+    this.isLoading.set(false)
     return;
   }
   
   if(!this.signinform.get('mailid')?.value){
     this.errorMessage.set('Please Enter mailid')
     this.iserrormail.set(true)
+    this.isLoading.set(false)
     return;
   }
   
   if(!this.signinform.get('Password')?.value){
     this.errorMessage.set('Please Enter Password')
     this.iserrorpass.set(true)
+    this.isLoading.set(false)
     return;
   }
 
   if(!this.OtpForm.get('otp')?.value){
     alert("OTP verification is required before proceeding.")
+    this.isLoading.set(false)
     return;
   }
 
@@ -81,7 +87,6 @@ SubmitForm(){
   //   this.iserror.set(true)
   // }
   if(this.otpverify() == "Sucess"){
- this.isLoading.set(true)
   this.errorMessage.set('')
 
   this.apiservice.resgister(this.signinform.value).subscribe({
@@ -90,6 +95,7 @@ SubmitForm(){
         console.log('registration sucess response', res);
         this.isLoading.set(false);
         this.router.navigate(["/action/logIn"])
+        this.isLoading.set(false)
       },
       error: (err) => {
         this.errorMessage.set(err);
@@ -124,6 +130,7 @@ SubmitForm(){
      if(!this.OtpForm.get('otp')?.value){
     this.errorMessage.set('Please Enter Otp')
     this.iserrormailotp.set(true)
+    this.isLoading.set(false)
     return;
   }
 

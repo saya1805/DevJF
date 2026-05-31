@@ -28,8 +28,9 @@
 <div >
   <img [src]="profilePicUrl ? profilePicUrl : '../../../../public/user.jpg'" alt="Profile Photo"  style="width: 150px; height: 150px; border-radius: 50%;" (click)="fileInput.click()">
          <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" style="display: none;">
-  
-  <p style="font-size: 12px; color: #00d2ff;">Click to change photo</p>
+        <!-- <h2 style="margin: 5px;padding-left: 55px;"><lucide-icon name="ArrowBigUpDash" [strokeWidth]="2" color="#00d2ff" class="rocket-icon"></lucide-icon></h2> -->
+
+  <!-- <p style="font-size: 14px; color: #00d2ff;padding-left: 25px;margin-top: 0;">Click to change photo</p> -->
 </div>
 
         <div>
@@ -101,3 +102,12 @@
     </form>
   </div>     
 </div>
+
+@if(isLoading()) {
+  <div class="loader-overlay">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div class="neon-spinner"></div>
+      <div class="loading-text">Signing in...</div>
+    </div>
+  </div>
+}

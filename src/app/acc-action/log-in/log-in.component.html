@@ -43,3 +43,13 @@
 </div>
 
 <app-custmize-toast></app-custmize-toast>
+
+
+@if(isLoading()) {
+  <div class="loader-overlay">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div class="neon-spinner"></div>
+      <div class="loading-text">Just a moment...</div>
+    </div>
+  </div>
+}

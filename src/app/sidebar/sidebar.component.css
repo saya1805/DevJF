@@ -90,3 +90,124 @@
 .cyan { border-bottom: 5px solid #08F7FE; box-shadow: 0 10px 20px rgba(8, 247, 254, 0.1); }
 .purple { border-bottom: 5px solid #A445ED; }
 .orange { border-bottom: 5px solid #FF8A65; }
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px); /* मागची स्क्रीन ब्लर करण्यासाठी */
+  z-index: 999;
+}
+
+/* पॉपअपची पोझिशन स्क्रीनच्या मधोमध आणण्यासाठी */
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  animation: fadeInModal 0.3s ease-out;
+}
+
+/* मुख्य ग्लास कार्ड */
+.modal-content {
+  /* background: rgba(250, 246, 246, 0.984) !important; */
+  background: white !important;
+  /* backdrop-filter: blur(16px); */
+  /* -webkit-backdrop-filter: blur(16px); */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 30px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* टॉपचा आयकॉन सर्कल */
+.modal-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  background: rgba(159, 207, 236, 0.1);
+  /* border: 1px solid rgba(239, 68, 68, 0.3); */
+  border: 1px solid #03a8d2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px auto;
+  color: #ef4444;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+}
+
+.modal-title {
+  color: black;
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.modal-text {
+  color: black; /* सॉफ्ट ग्रे रंग जेणेकरून डोळ्यांना टोचणार नाही */
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+/* बट्सचा लेआउट */
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+/* No / Cancel बटन */
+.btn-cancel {
+  flex: 1;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #cbd5e1;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* Yes / Exit बटन (Neon Red Effect) */
+.btn-confirm {
+  flex: 1;
+  background: #ef4444;
+  border: none;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  transition: all 0.2s;
+}
+
+.btn-confirm:hover {
+  background: #dc2626;
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.5);
+  transform: translateY(-1px);
+}
+
+/* पॉपअप येतानाचा स्मूथ ॲनिमेशन */
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}

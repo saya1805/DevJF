@@ -22,6 +22,8 @@ export class LogInComponent {
   errorusername = signal(false)
   errorpass = signal(false)
 
+  isLoading = signal(false)
+
   loginform:FormGroup = this.fb.group({
   "fullname":"",
   "username":"",
@@ -31,24 +33,28 @@ export class LogInComponent {
   })
 
   logInForm(){
+    this.isLoading.set(true)
     if(!this.loginform.get('username')?.value){
       this.errorusername.set(true)
+      this.isLoading.set(false)
       return;
     }
 
     if(!this.loginform.get('Password')?.value){
       this.errorpass.set(true)
+       this.isLoading.set(false)
       return;
     }
 
     this.apiservice.login(this.loginform.value).subscribe({
       next:(res) =>{
-        alert('login sucessfull')
+        // alert('login sucessfull')
         console.log(res)
           localStorage.setItem('roles',res.roles)
         this.toast.show('Login Successful','success')
         setTimeout(() => {
         this.router.navigateByUrl('home');
+         this.isLoading.set(false)
       }, 2000);
       },error:(res) => {
         console.log(res)

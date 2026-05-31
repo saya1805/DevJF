@@ -22,17 +22,29 @@ export class CrsComponent {
   logoPath:any
   selectedCourse:any
   
-  id:any = this.route.snapshot.paramMap.get('id')
+  // id:any = this.route.snapshot.paramMap.get('id')
 
   // crslistbyId = toSignal(this.apiservice.getCrsbyId(this.id)  as Observable<any[]>, {initialValue: null}  )
-  crslistbyId = toSignal(this.clickedUserId$.pipe(filter((crsid:any) => crsid !== null && crsid !== undefined && crsid !== ''),switchMap(crsId => {return this.apiservice.getCrsbyId(crsId)  as Observable<any>;})), {initialValue: null}  )
+  crslistbyId = toSignal(this.clickedUserId$.pipe(filter((crsid:any) => crsid !== null && crsid !== undefined && crsid !== ''),switchMap(crsid => {return this.apiservice.getCrsbyId(crsid)  as Observable<any>;})), {initialValue: null}  )
   
   constructor(){
-    const navigation:any = this.router.getCurrentNavigation();
-    this.selectedCourse = navigation?.extras?.state?.['courseData'];
-    this.clickedUserId$.next(navigation?.id)
+  const navigation = this.router.getCurrentNavigation();
+    const stateData = navigation?.extras?.state;
+
+    if (stateData) {
+      this.selectedCourse = stateData['courseData'];
+      const currentCourseId = stateData['courseId'];
+
+      console.log("स्टेट मधून मिळालेला अचूक आयडी:", currentCourseId);
+
+      // ४. हा आयडी सब्जेक्टमध्ये ढकला, जेणेकरून तो filter पार करून switchMap ला जाईल
+      if (currentCourseId) {
+        this.clickedUserId$.next(currentCourseId);
+      }
+    }
+    // this.clickedUserId$.next(navigation?.id)
     effect(() => {
-      console.log(this.id,'777737373737')
+      // console.log(this.id,'777737373737')
       // console.log(this.crslistbyId(),'iddddddd')
 
       const data = this.crslistbyId();
