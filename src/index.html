@@ -7,6 +7,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" sizes="192x192" href="devj.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script>
+  // १. global आणि process डिफाईन करा
+  if (typeof global === 'undefined') {
+    var global = window;
+  }
+  if (typeof process === 'undefined') {
+    var process = {
+      env: { DEBUG: undefined },
+      argv: [],
+      binding: function() { return {}; },
+      cwd: function() { return '/'; }
+    };
+  }
+
+  // २. 'util' आणि त्याचा 'inherits' फंक्शन डिफाईन करा जेणेकरून Object.create एरर येणार नाही
+  if (typeof util === 'undefined') {
+    var util = {
+      inherits: function(ctor, superCtor) {
+        if (superCtor) {
+          ctor.super_ = superCtor;
+          ctor.prototype = Object.create(superCtor.prototype, {
+            constructor: {
+              value: ctor,
+              enumerable: false,
+              writable: true,
+              configurable: true
+            }
+          });
+        }
+      }
+    };
+  }
+</script>
 </head>
 <body>
   <app-root></app-root>

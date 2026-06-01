@@ -6,7 +6,11 @@
     "outDir": "./out-tsc/app",
     "types": [
       "node"
-    ]
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "util": ["./node_modules/util/util.js"]
+    }
   },
   "files": [
     "src/main.ts",

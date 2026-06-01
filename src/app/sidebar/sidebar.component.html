@@ -103,7 +103,7 @@
 
       }
 
-      <div style="display: flex;align-items: center;gap: 10px;margin-top: 200px;">
+      <div style="display: flex;align-items: center;gap: 10px;margin-top: 200px;" (click)="existpopup()">
        <div><i-lucide name="LogOutIcon" class="icon-glow"></i-lucide></div>
        <div style="color:#03a8d2;font-size: 25px;">Log<span style="font-size: 16px;color: white;padding-left: 8px;">Out</span></div>
        </div>
@@ -111,22 +111,25 @@
     </nav>
   </aside>
 
+
+@if(openlogout()){
 <div class="modal-backdrop" ></div>
 
 <div class="modal-container" >
   <div class="modal-content glass-card">
     
     <div class="modal-icon-wrapper">
-      <i-lucide name="ShutdownIcon" class="modal-icon"></i-lucide>
+      <i-lucide name="PowerOff" class="modal-icon"></i-lucide>
     </div>
 
     <h3 class="modal-title">Exit Application</h3>
     <p class="modal-text">Are you sure you want to log out?</p>
 
     <div class="modal-actions">
-      <button class="btn-cancel" >No, Stay</button>
-      <button class="btn-confirm" >Yes, Exit</button>
+      <button class="btn-cancel" (click)="clickcancel()">No, Stay</button>
+      <button class="btn-confirm" (click)="clicklogout()">Yes, Exit</button>
     </div>
 
   </div>
 </div>
+}

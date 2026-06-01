@@ -115,7 +115,7 @@
 /* मुख्य ग्लास कार्ड */
 .modal-content {
   /* background: rgba(250, 246, 246, 0.984) !important; */
-  background: white !important;
+  background: black !important;
   /* backdrop-filter: blur(16px); */
   /* -webkit-backdrop-filter: blur(16px); */
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -143,14 +143,14 @@
 }
 
 .modal-title {
-  color: black;
+  /* color: black; */
   font-size: 18px;
   margin-bottom: 8px;
   font-weight: 600;
 }
 
 .modal-text {
-  color: black; /* सॉफ्ट ग्रे रंग जेणेकरून डोळ्यांना टोचणार नाही */
+  /* color: black;  */
   font-size: 14px;
   margin-bottom: 24px;
 }
@@ -165,9 +165,9 @@
 /* No / Cancel बटन */
 .btn-cancel {
   flex: 1;
-  background: transparent;
+  background: #03a8d2;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #cbd5e1;
+  color: black;
   padding: 10px;
   border-radius: 8px;
   cursor: pointer;
@@ -183,9 +183,9 @@
 /* Yes / Exit बटन (Neon Red Effect) */
 .btn-confirm {
   flex: 1;
-  background: #ef4444;
+  background: white;
   border: none;
-  color: #ffffff;
+  color: black;
   padding: 10px;
   border-radius: 8px;
   cursor: pointer;
@@ -195,8 +195,9 @@
 }
 
 .btn-confirm:hover {
-  background: #dc2626;
-  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.5);
+  background: black;
+  color: white;
+  box-shadow: 0 4px 20px rgba(125, 123, 123, 0.5);
   transform: translateY(-1px);
 }
 
