@@ -118,7 +118,7 @@ Crssubmit(){
     next:(res => {
       setTimeout(() => {
         this.isLoading.set(false) // ३० सेकंदानी लोडर बंद होईल
-        this.toastr.success('Modules Added Successfully!', 'Success');
+        this.toastr.success('Course Added Successfully!', 'Success');
         // alert("Modules Added Successfully!");
       }, 1000);
       console.log(res)

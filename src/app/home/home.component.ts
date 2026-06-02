@@ -38,16 +38,21 @@ export class HomeComponent {
   }
 
   // २. जर पाथ आधीच '/' ने सुरू होत असेल (उदा. /uploads/...)
-  if (url.startsWith('/')) {
-    return 'https://localhost:7018' + url;
+  // if (url.startsWith('/')) {
+  //   return 'https://localhost:7018' + url;
+  // }
+
+   if (url.startsWith('/')) {
+    return 'https://devjback.bsite.net' + url;
   }
 
   // ३. जर फक्त फाइलचे नाव असेल, तर 'uploads/' जोडा
-  return 'https://localhost:7018/uploads/' + url;
+  // return 'https://localhost:7018/uploads/' + url;
+  return 'https://devjback.bsite.net/uploads/' + url;
 }
 
 getInitials(name: string): string {
-  if (!name) return 'U'; // जर नाव नसेल तर डिफॉल्ट 'U' (User)
+  if (!name) return 'U';
   return name.charAt(0).toUpperCase();
 }
 
