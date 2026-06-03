@@ -1,1 +1,106 @@
-<p>user-management works!</p>
+<div class="table-container">
+  <div class="table-header-actions">
+    <h2>User Management</h2>
+    <!-- <button class="btn-neon">Add New Course</button> -->
+  </div>
+
+  <table class="dark-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Course Count</th>
+        <th>View</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for(user of userlist();track user.id;let i = $index){
+      <tr>
+        <td>#{{i + 1}}</td>
+        <td class="text-neon">{{user.username}}</td>
+        <td>{{user.mailid}}</td>
+        <td><span class="badge badge-active">{{user.courseCount}}</span></td>
+        <td>
+          <!-- <button class="btn-action edit">View</button> -->
+          <button class="btn-action edit" (click)="openUsercourse()"> 
+            <i-lucide name="ViewIcon" class="modal-icon"></i-lucide>
+          </button>
+        </td>
+      </tr>
+    }
+      <!-- <tr>
+        <td>#02</td>
+        <td class="text-neon">.NET Core Web API</td>
+        <td>Backend</td>
+        <td><span class="badge badge-pending">Pending</span></td>
+        <td>
+          <button class="btn-action edit">Edit</button>
+          <button class="btn-action delete">Delete</button>
+        </td>
+      </tr> -->
+    </tbody>
+  </table>
+</div>
+
+<!-- आपण सध्या टेस्टिंगसाठी हा पॉपअप नेहमी दिसावा म्हणून @if (true) केला आहे -->
+@if (selectedUser()) {
+  <div class="backdrop" >
+    <div class="glass-modal" >
+      
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2><span class="neon-text">John Doe's</span> Courses</h2>
+        <button class="close-btn" (click)="closeusercourse()">&times;</button>
+      </div>
+
+      <!-- Course Count Badge -->
+      <div class="count-badge">
+        Total Enrolled: <span class="neon-count">2</span>
+      </div>
+
+      <!-- Modal Body / Course List -->
+      <div class="modal-body custom-scrollbar">
+        <div class="course-grid">
+          
+          <!-- Static Course Card 1 -->
+          <div class="course-card">
+            <div class="card-glow"></div>
+            <div class="course-info">
+              <h3>Angular Mastery (Advanced)</h3>
+              <span class="status-tag active">
+                Active
+              </span>
+            </div>
+            <div class="course-meta">
+              <p>📅 Days: 90 Days</p>
+              <p>💳 Mode: Online UPI</p>
+            </div>
+          </div>
+
+          <!-- Static Course Card 2 -->
+          <div class="course-card">
+            <div class="card-glow"></div>
+            <div class="course-info">
+              <h3>Full Stack Web Development</h3>
+              <span class="status-tag pending">
+                Pending
+              </span>
+            </div>
+            <div class="course-meta">
+              <p>📅 Days: 180 Days</p>
+              <p>💳 Mode: Credit Card</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button class="action-btn" (click)="closeusercourse()">Close</button>
+      </div>
+
+    </div>
+  </div>
+}

@@ -152,22 +152,17 @@ SubmitForm(){
   console.log(file);
 
   if (file) {
-    // १. नेटलिफायवर लगेच प्रिव्ह्यू दिसण्यासाठी FileReader (Local Client Side)
     const reader = new FileReader();
     reader.onload = () => {
-      this.profilePicUrl = reader.result as string; // यामुळे स्क्रीनवर इमेज लगेच दिसेल
+      this.profilePicUrl = reader.result as string; 
     };
     reader.readAsDataURL(file);
 
-    // २. तुमचा चालू असलेला API कॉल (बॅकएंडला इमेज पाठवण्यासाठी)
     this.apiservice.userprofileurl(file).subscribe({
       next: (res: any) => {
         const fileName = res.path.replace(/\s+/g, '');
         const profileurl = res.path.replace("uploads/", "");
         this.signinform.patchValue({ ProfilePictureUrl: profileurl });
-        
-        // टीप: जेव्हा बॅकएंड लाईव्ह सर्व्हरवर डिप्लॉय कराल, तेव्हा 'localhost' ऐवजी लाईव्ह URL टाकावी लागेल.
-        // तूर्तास वरील FileReader मुळे स्क्रीनवर इमेज गायब होणार नाही.
         this.randomValue = Math.random();
       },
       error: (err: any) => {
