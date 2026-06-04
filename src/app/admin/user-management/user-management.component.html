@@ -1,6 +1,7 @@
 <div class="table-container">
   <div class="table-header-actions">
-    <h2>User Management</h2>
+    <!-- <h2>User Management</h2> -->
+     <h2><span class="neon-text">User</span> Management</h2>
     <!-- <button class="btn-neon">Add New Course</button> -->
   </div>
 
@@ -23,22 +24,12 @@
         <td><span class="badge badge-active">{{user.courseCount}}</span></td>
         <td>
           <!-- <button class="btn-action edit">View</button> -->
-          <button class="btn-action edit" (click)="openUsercourse()"> 
+          <button class="btn-action edit" (click)="openUsercourse(user.id)"> 
             <i-lucide name="ViewIcon" class="modal-icon"></i-lucide>
           </button>
         </td>
       </tr>
     }
-      <!-- <tr>
-        <td>#02</td>
-        <td class="text-neon">.NET Core Web API</td>
-        <td>Backend</td>
-        <td><span class="badge badge-pending">Pending</span></td>
-        <td>
-          <button class="btn-action edit">Edit</button>
-          <button class="btn-action delete">Delete</button>
-        </td>
-      </tr> -->
     </tbody>
   </table>
 </div>
@@ -50,53 +41,38 @@
       
       <!-- Modal Header -->
       <div class="modal-header">
-        <h2><span class="neon-text">John Doe's</span> Courses</h2>
+        <h2><span class="neon-text">{{UserCrsIbyId()?.username}}</span> Courses</h2>
         <button class="close-btn" (click)="closeusercourse()">&times;</button>
       </div>
 
       <!-- Course Count Badge -->
       <div class="count-badge">
-        Total Enrolled: <span class="neon-count">2</span>
+        Total Enrolled: <span class="neon-count">{{UserCrsIbyId()?.userCrsCount}}</span>
       </div>
 
       <!-- Modal Body / Course List -->
       <div class="modal-body custom-scrollbar">
         <div class="course-grid">
+      @for(userCrs of UserCrsIbyId()?.userCrsInfo;track userCrs.id){
           
           <!-- Static Course Card 1 -->
           <div class="course-card">
             <div class="card-glow"></div>
             <div class="course-info">
-              <h3>Angular Mastery (Advanced)</h3>
+              <h3>{{userCrs.coursename}}</h3>
               <span class="status-tag active">
-                Active
+                {{userCrs.course_status}}
               </span>
             </div>
             <div class="course-meta">
-              <p>📅 Days: 90 Days</p>
-              <p>💳 Mode: Online UPI</p>
+              <p>📅 Days:{{userCrs.course_days}} Days</p>
+              <p>💳 Mode:{{userCrs.payment_mode}}</p>
             </div>
           </div>
-
-          <!-- Static Course Card 2 -->
-          <div class="course-card">
-            <div class="card-glow"></div>
-            <div class="course-info">
-              <h3>Full Stack Web Development</h3>
-              <span class="status-tag pending">
-                Pending
-              </span>
-            </div>
-            <div class="course-meta">
-              <p>📅 Days: 180 Days</p>
-              <p>💳 Mode: Credit Card</p>
-            </div>
-          </div>
+    }
 
         </div>
       </div>
-
-      <!-- Modal Footer -->
       <div class="modal-footer">
         <button class="action-btn" (click)="closeusercourse()">Close</button>
       </div>

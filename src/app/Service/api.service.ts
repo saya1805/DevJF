@@ -9,12 +9,12 @@ export class ApiService {
 
   private http = inject(HttpClient)
   // Local url path
-  // public crsapiUrl = "https://localhost:7018/api/"
-  // public apiurl = "https://localhost:7018/api/Auth"
+  public crsapiUrl = "https://localhost:7018/api/"
+  public apiurl = "https://localhost:7018/api/Auth"
 
-  // Live Url Path
-  public apiurl = "https://devjback.bsite.net/api/Auth"
-  public crsapiUrl = "https://devjback.bsite.net/api/"
+  // // Live Url Path
+  // public apiurl = "https://devjback.bsite.net/api/Auth"
+  // public crsapiUrl = "https://devjback.bsite.net/api/"
 
   token = signal<string|null>(typeof window !== 'undefined' ? localStorage.getItem('user_token') : null)
 
@@ -43,6 +43,14 @@ export class ApiService {
 
   getalluserlist(){
     return this.http.get(this.apiurl+`/get-users`).pipe(
+      tap(res => {
+        console.log(res)
+      })
+    )
+  }
+
+    getalluserCrslistbyId(id:any){
+    return this.http.get(this.apiurl+`/GetUserCrsbyId/${id}`).pipe(
       tap(res => {
         console.log(res)
       })
